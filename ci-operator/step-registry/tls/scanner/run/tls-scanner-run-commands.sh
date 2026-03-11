@@ -62,7 +62,7 @@ spec:
     - -c
     - |
       mkdir -p /results
-      /usr/local/bin/tls-scanner -j 4 ${SCANNER_ARGS} \
+      /usr/local/bin/tls-scanner -j 8 ${SCANNER_ARGS} \
         --json-file /results/results.json \
         --csv-file /results/results.csv \
         --junit-file /results/junit_tls_scan.xml \
@@ -72,11 +72,11 @@ spec:
       sleep 120
     resources:
       requests:
-        cpu: "4"
-        memory: 4Gi
+        cpu: "8"
+        memory: 8Gi
       limits:
-        cpu: "4"
-        memory: 4Gi
+        cpu: "8"
+        memory: 8Gi
     securityContext:
       privileged: true
       runAsUser: 0

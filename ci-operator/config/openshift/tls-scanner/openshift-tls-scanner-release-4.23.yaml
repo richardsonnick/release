@@ -38,19 +38,19 @@ resources:
       cpu: 100m
       memory: 200Mi
   tls-scanner-run:
-    requests:
-      cpu: "4"
-      memory: 4Gi
     limits:
-      cpu: "4"
-      memory: 4Gi
+      cpu: "8"
+      memory: 8Gi
+    requests:
+      cpu: "8"
+      memory: 8Gi
 tests:
 - as: default-tls
   optional: true
   steps:
     cluster_profile: aws-5
     env:
-      COMPUTE_NODE_TYPE: m5.4xlarge
+      COMPUTE_NODE_TYPE: m5.8xlarge
     test:
     - ref: tls-scanner-run
     workflow: ipi-aws
@@ -59,7 +59,7 @@ tests:
   steps:
     cluster_profile: aws-5
     env:
-      COMPUTE_NODE_TYPE: m5.4xlarge
+      COMPUTE_NODE_TYPE: m5.8xlarge
     test:
     - ref: tls-scanner-run
     - ref: openshift-e2e-test
@@ -69,7 +69,7 @@ tests:
   steps:
     cluster_profile: aws-5
     env:
-      COMPUTE_NODE_TYPE: m5.4xlarge
+      COMPUTE_NODE_TYPE: m5.8xlarge
     test:
     - ref: tls-scanner-run
     workflow: ipi-aws
@@ -78,7 +78,7 @@ tests:
   steps:
     cluster_profile: aws-5
     env:
-      COMPUTE_NODE_TYPE: m5.4xlarge
+      COMPUTE_NODE_TYPE: m5.8xlarge
     test:
     - ref: tls-scanner-run
     - ref: openshift-e2e-test
