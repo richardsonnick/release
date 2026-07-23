@@ -70,11 +70,12 @@ run_tls_scan() {
 
   local scanner_cpu="${SCANNER_CPU}"
   local scanner_memory="${SCANNER_MEMORY}"
+  local scanner_parallel="${SCANNER_PARALLEL:-4}"
   if [[ "${TLS_SCANNER_CLUSTER_LABEL:-}" == "guest" ]]; then
     scanner_cpu="${SCANNER_CPU_GUEST:-1}"
     scanner_memory="${SCANNER_MEMORY_GUEST:-2Gi}"
   fi
-  echo "Scanner pod resources: cpu=${scanner_cpu} memory=${scanner_memory}"
+  echo "Scanner pod resources: cpu=${scanner_cpu} memory=${scanner_memory} parallel=${scanner_parallel}"
 
   mkdir -p "${SCANNER_ARTIFACT_DIR}"
 
@@ -177,7 +178,7 @@ spec:
     - -c
     - |
       mkdir -p /results
-      /usr/local/bin/tls-scanner -j 4 ${SCANNER_ARGS} \
+      /usr/local/bin/tls-scanner -j ${scanner_parallel} ${SCANNER_ARGS} \
         --json-file /results/results.json \
         --csv-file /results/results.csv \
         --junit-file /results/junit_tls_scan.xml \

@@ -33,6 +33,9 @@ ref:
   - name: SCANNER_MEMORY_GUEST
     default: "2Gi"
     documentation: "Memory request/limit for the scanner pod on the guest cluster."
+  - name: SCANNER_PARALLEL
+    default: "4"
+    documentation: "Number of concurrent scan workers (-j) used by tls-scanner."
   - name: TLS_PROFILE_TYPE
     default: "Modern"
     documentation: |-

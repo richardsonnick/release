@@ -19,6 +19,9 @@ ref:
   - name: SCANNER_MEMORY
     default: "4Gi"
     documentation: "Memory request/limit for the scanner pod."
+  - name: SCANNER_PARALLEL
+    default: "4"
+    documentation: "Number of concurrent scan workers (-j) used by tls-scanner."
   - name: TLS_SCANNER_CLUSTER_LABEL
     default: ""
     documentation: |-
