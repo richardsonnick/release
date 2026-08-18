@@ -1,0 +1,15 @@
+{
+	"path": "tls/profile/intermediate/tls-profile-intermediate-ref.yaml",
+	"owners": {
+		"approvers": [
+			"richardsonnick",
+			"rhmdnd",
+			"smith-xyz"
+		],
+		"reviewers": [
+			"richardsonnick",
+			"rhmdnd",
+			"smith-xyz"
+		]
+	}
+}

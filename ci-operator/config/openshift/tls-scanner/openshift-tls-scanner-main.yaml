@@ -95,6 +95,29 @@ tests:
     test:
     - ref: tls-scanner-run
     workflow: ipi-aws
+- as: periodic-tls-negative-canary
+  interval: 72h
+  reporter_config:
+    channel: '#forum-case'
+    job_states_to_report:
+    - success
+    - failure
+    - error
+    report_template: '{{if eq .Status.State "failure"}} :white_check_mark: Negative
+      canary *{{.Spec.Job}}* *failed as expected*: the scanner flagged the Intermediate
+      profile against a Modern expectation. <{{.Status.URL}}|View logs> {{else}} :warning:
+      Negative canary *{{.Spec.Job}}* ended with *{{.Status.State}}* but was expected
+      to fail - the scanner may not be detecting non-compliant profiles. <{{.Status.URL}}|View
+      logs> {{end}}'
+  steps:
+    cluster_profile: openshift-org-aws
+    env:
+      COMPUTE_NODE_TYPE: m5.4xlarge
+      TLS_PROFILE_TYPE: Modern
+    test:
+    - ref: tls-profile-intermediate
+    - ref: tls-scanner-run
+    workflow: ipi-aws
 - as: periodic-pqc-readiness
   interval: 72h
   reporter_config:

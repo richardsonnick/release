@@ -1,0 +1,16 @@
+ref:
+  as: tls-profile-intermediate
+  from_image:
+    namespace: ocp
+    name: cli-jq
+    tag: latest
+  commands: tls-profile-intermediate-commands.sh
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+  documentation: |
+    Explicitly sets the cluster's API server tlsSecurityProfile to the Intermediate
+    profile and waits for the cluster to stabilize. Intended for negative-canary
+    jobs that run the TLS scanner with a Modern expectation against an
+    Intermediate cluster to verify that compliance checks fail when they should.
