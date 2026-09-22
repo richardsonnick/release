@@ -4,7 +4,7 @@ metadata:
   name: cert-issuer-aws
 spec:
   acme:
-    email: openshift-ci-robot@redhat.com
+    email: aos-team-dp-testplatform@redhat.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: cert-issuer-aws-account-key
@@ -24,7 +24,7 @@ metadata:
   name: cert-issuer
 spec:
   acme:
-    email: openshift-ci-robot@redhat.com
+    email: aos-team-dp-testplatform@redhat.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: cert-issuer-account-key

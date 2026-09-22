@@ -4,7 +4,7 @@ metadata:
   name: cert-issuer-ci-build-farm
 spec:
   acme:
-    email: openshift-ci-robot@redhat.com
+    email: aos-team-dp-testplatform@redhat.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: cert-issuer-account-key
