@@ -425,6 +425,9 @@ groups:
   openshift-storage:
     clusters:
     - app.ci
+  openshift-technical-release-team:
+    secret_collections:
+    - technical-release-team
   openshift-test-platform:
     clusters:
     - app.ci
@@ -435,6 +438,12 @@ groups:
     clusters:
     - app.ci
     - hosted-mgmt
+    secret_collections:
+    - docker-openstack-k8s-operators-secrets
+    - openstack-k8s-operators-hive-secrets
+    - openstack-k8s-operators-internal
+    - openstack-k8s-operators-secrets
+    - rdoquay-openstack-k8s-operators-ci-robot
   osasinfra-dev:
     clusters:
     - app.ci
@@ -635,7 +644,6 @@ groups:
     - api-review-bot-github-credentials
     - aro-ci
     - aro-classic-prow-e2e
-    - arohcppullsecrets
     - autoscaling
     - autoscaling-team-bot-credentials
     - aws-creds
@@ -677,7 +685,6 @@ groups:
     - dfrazzet-vault-ci-operator
     - divyam-ci-pull-secret
     - dno-tools
-    - docker-openstack-k8s-operators-secrets
     - dptp-demo-collection
     - dynamic-plugin-sdk
     - e2e-rhoai
@@ -720,7 +727,6 @@ groups:
     - insights-qa
     - integr8ly
     - intersmash-e2e
-    - isc-qe
     - jbieren
     - joeg-pro-secrets
     - jws-qe
@@ -801,9 +807,6 @@ groups:
     - openshift-virtualization-tests
     - openshiftanalytics
     - openshiftoperatorframeworkgithub
-    - openstack-k8s-operators-hive-secrets
-    - openstack-k8s-operators-internal
-    - openstack-k8s-operators-secrets
     - openstack-lightspeed
     - openstack-rhoai-qe-collection
     - osd-hive-control-cluster
@@ -822,9 +825,7 @@ groups:
     - pipeline-secrets
     - power-s2s
     - prucek
-    - qe-rhel-jetson
     - ran-telco5g-kpi-results
-    - rdoquay-openstack-k8s-operators-ci-robot
     - red-hat-data-services
     - reference-addon-credentials
     - registry-liveness-probe
@@ -852,7 +853,6 @@ groups:
     - sselvan
     - stolostron-engine-secrets
     - tcarneir
-    - technical-release-team
     - tekton-tasks-secrets
     - telco-compute-qe
     - telco-dast

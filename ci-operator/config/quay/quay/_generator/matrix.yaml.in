@@ -67,6 +67,13 @@ quay:
         clouds: [aws]
         ocp: ["5.0"]
         test: e2e-install
+      # AWS dual-stack install is TechPreview on OCP 4.22, default-on from 5.0
+      - cron: weekly
+        source: nightly
+        clouds: [aws]
+        ocp: ["5.0"]
+        test: e2e-install
+        dualstack: true
       # oldest OCP Quay 3.18 supports with an ART nightly FBC (v4.12/v4.13 have none)
       - cron: weekly
         source: nightly
@@ -282,12 +289,16 @@ quay:
       QUAY_INDEX_IMAGE_TAG: quay-3.18__v4.22__quay-rhel9-operator
       QUAY_OPERATOR_SOURCE: fbc-operator-catalog
     jobs:
+      # The pipeline controller (core-services/pipeline-controller/config.yaml)
+      # runs these jobs on `/pipeline remaining` when a PR changes Python
+      # dependency pins.
       - kind: presubmit
         clouds: [aws, gcp, azure]
         ocp: ["4.22"]
         test: e2e-install
         always_run: false
         optional: true
+        pipeline_run_if_changed: '^(?:requirements(?:-build)?\.txt|constraints\.txt|pyproject\.toml)$'
       - kind: presubmit
         clouds: [aws]
         ocp: ["4.22"]
