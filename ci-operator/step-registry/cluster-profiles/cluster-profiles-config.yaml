@@ -1522,6 +1522,10 @@ cluster_profiles:
   secret: cluster-secrets-gcp-opendatahub
 - cluster_type: gcp
   lease_type: gcp-openshift-gce-devel-ci-2-quota-slice
+  gcp_federation:
+    hub_role_arn: arn:aws:iam::320297955214:role/ci-step-runner-hub
+    provider: projects/263120870185/locations/global/workloadIdentityPools/ci-aws-pilot/providers/aws-ci-hub
+    service_account: ci-provisioner-2@openshift-gce-devel-ci-2.iam.gserviceaccount.com
   name: gcp-openshift-gce-devel-ci-2
   owners:
   - org: openshift

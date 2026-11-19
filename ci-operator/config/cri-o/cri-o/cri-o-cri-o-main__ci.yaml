@@ -50,6 +50,22 @@ tests:
   steps:
     cluster_profile: openshift-org-gcp
     workflow: cri-o-rhel-critest
+- always_run: false
+  as: rhel-critest-jobs2-wif
+  cluster: build07
+  optional: true
+  restrict_network_access: true
+  steps:
+    cluster_profile: openshift-org-gcp
+    gcp_workload_identity: true
+    post:
+    - ref: cri-o-gather
+    - ref: gcp-crio-wif-cleanup
+    pre:
+    - ref: gcp-crio-wif-prepare
+    - ref: gcp-crio-provision-vpc
+    - ref: gcp-crio-provision-buildhost
+    workflow: cri-o-rhel-critest
 - as: rhel-e2e
   steps:
     cluster_profile: openshift-org-gcp
