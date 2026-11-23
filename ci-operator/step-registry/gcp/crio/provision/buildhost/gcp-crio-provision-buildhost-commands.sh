@@ -41,13 +41,13 @@ curl -L https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64 -
 #########Save Login As Script###########
 #####################################
 if [[ -n "${CLOUDSDK_AUTH_ACCESS_TOKEN_FILE:-}" ]]; then
-  source "${SHARED_DIR}/jobs2-login.sh"
+  source "${SHARED_DIR}/crio-wif-login.sh"
   # The test and gather pods can leave build07 through different addresses.
   cat > "${SHARED_DIR}/login_script.sh" <<'LOGIN'
 #!/bin/bash
 set -euo pipefail
-source "${SHARED_DIR}/jobs2-login.sh"
-cidr=$(jobs2_ssh_source)
+source "${SHARED_DIR}/crio-wif-login.sh"
+cidr=$(crio_wif_ssh_source)
 gcloud compute firewall-rules update "${NAMESPACE}-${UNIQUE_HASH}-buildhost-ingress-allow" --source-ranges="$cidr"
 LOGIN
   chmod +x "${SHARED_DIR}/login_script.sh"
@@ -135,7 +135,7 @@ vm_identity=()
 firewall_source=()
 if [[ -n "${CLOUDSDK_AUTH_ACCESS_TOKEN_FILE:-}" ]]; then
   vm_identity=(--no-service-account --no-scopes)
-  cidr=$(jobs2_ssh_source)
+  cidr=$(crio_wif_ssh_source)
   firewall_source=("--source-ranges=$cidr")
 fi
 CREATED_ZONE=""

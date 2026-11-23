@@ -476,7 +476,7 @@ presubmits:
     - ^main$
     - ^main-
     cluster: build07
-    context: ci/prow/ci-rhel-critest-jobs2-wif
+    context: ci/prow/ci-rhel-critest-gcp-wif
     decorate: true
     decoration_config:
       skip_cloning: true
@@ -487,9 +487,9 @@ presubmits:
       ci-operator.openshift.io/variant: ci
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
-    name: pull-ci-cri-o-cri-o-main-ci-rhel-critest-jobs2-wif
+    name: pull-ci-cri-o-cri-o-main-ci-rhel-critest-gcp-wif
     optional: true
-    rerun_command: /test ci-rhel-critest-jobs2-wif
+    rerun_command: /test ci-rhel-critest-gcp-wif
     spec:
       containers:
       - args:
@@ -502,7 +502,7 @@ presubmits:
         - --lease-server-credentials-file=/etc/boskos/credentials
         - --report-credentials-file=/etc/report/credentials
         - --secret-dir=/secrets/ci-pull-credentials
-        - --target=rhel-critest-jobs2-wif
+        - --target=rhel-critest-gcp-wif
         - --variant=ci
         command:
         - ci-operator
@@ -574,7 +574,7 @@ presubmits:
       - name: result-aggregator
         secret:
           secretName: result-aggregator
-    trigger: (?m)^/test( | .* )ci-rhel-critest-jobs2-wif,?($|\s.*)
+    trigger: (?m)^/test( | .* )ci-rhel-critest-gcp-wif,?($|\s.*)
   - agent: kubernetes
     always_run: true
     branches:

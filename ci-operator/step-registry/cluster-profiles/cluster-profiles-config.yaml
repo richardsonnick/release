@@ -1422,6 +1422,10 @@ cluster_profiles:
   secret: cluster-secrets-gcd
 - cluster_type: gcp
   lease_type: openshift-org-gcp-quota-slice
+  gcp_federation:
+    hub_role_arn: arn:aws:iam::320297955214:role/ci-step-runner-hub
+    provider: projects/263120870185/locations/global/workloadIdentityPools/ci-aws-pilot/providers/aws-ci-hub
+    service_account: do-not-delete-ci-provisioner@openshift-gce-devel-ci.iam.gserviceaccount.com
   name: gcp
   owners:
   - org: ViaQ
@@ -1461,6 +1465,10 @@ cluster_profiles:
   secret: cluster-secrets-gcp
 - cluster_type: gcp
   lease_type: gcp-3-quota-slice
+  gcp_federation:
+    hub_role_arn: arn:aws:iam::320297955214:role/ci-step-runner-hub
+    provider: projects/263120870185/locations/global/workloadIdentityPools/ci-aws-pilot/providers/aws-ci-hub
+    service_account: ci-provisioner@openshift-gce-devel-ci-3.iam.gserviceaccount.com
   name: gcp-3
   owners:
   - org: ViaQ

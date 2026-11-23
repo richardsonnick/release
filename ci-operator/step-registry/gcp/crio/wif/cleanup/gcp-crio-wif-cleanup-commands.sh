@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
-[[ -s "${SHARED_DIR}/jobs2-prefix" ]] || exit 0
-prefix=$(<"${SHARED_DIR}/jobs2-prefix")
+[[ -s "${SHARED_DIR}/crio-wif-prefix" ]] || exit 0
+prefix=$(<"${SHARED_DIR}/crio-wif-prefix")
 [[ "$prefix" == "${NAMESPACE}-${UNIQUE_HASH}" && "$prefix" =~ ^ci-op-[a-z0-9-]+$ ]] || { echo "Rehearsal identity or configuration check failed" >&2; exit 1; }
-source "${SHARED_DIR}/jobs2-login.sh"
-source "${SHARED_DIR}/jobs2-resources.sh"
+source "${SHARED_DIR}/crio-wif-login.sh"
+source "${SHARED_DIR}/crio-wif-resources.sh"
 
 failed=0
 zones=$(vm_zones)

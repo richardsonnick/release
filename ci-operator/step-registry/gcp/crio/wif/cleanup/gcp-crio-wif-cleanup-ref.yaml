@@ -9,4 +9,4 @@ ref:
     requests:
       cpu: 100m
       memory: 200Mi
-  documentation: Remove and verify only the resources named for this Jobs 2 rehearsal.
+  documentation: Remove and verify only the resources named for this federated CRI-O rehearsal.

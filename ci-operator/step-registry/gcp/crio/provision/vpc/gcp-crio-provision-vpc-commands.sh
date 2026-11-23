@@ -6,7 +6,7 @@ python3 --version
 export CLOUDSDK_PYTHON=python3
 
 if [[ -n "${CLOUDSDK_AUTH_ACCESS_TOKEN_FILE:-}" ]]; then
-  source "${SHARED_DIR}/jobs2-login.sh"
+  source "${SHARED_DIR}/crio-wif-login.sh"
 else
 GOOGLE_PROJECT_ID="$(<${CLUSTER_PROFILE_DIR}/openshift_gcp_project)"
 export GCP_SHARED_CREDENTIALS_FILE="${CLUSTER_PROFILE_DIR}/gce.json"

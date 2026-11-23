@@ -51,7 +51,7 @@ tests:
     cluster_profile: openshift-org-gcp
     workflow: cri-o-rhel-critest
 - always_run: false
-  as: rhel-critest-jobs2-wif
+  as: rhel-critest-gcp-wif
   cluster: build07
   optional: true
   restrict_network_access: true
