@@ -5,12 +5,17 @@ set -xeuo pipefail
 python3 --version
 export CLOUDSDK_PYTHON=python3
 
+if [[ "${CRIO_GCP_WIF:-false}" == true ]]; then
+  source "${SHARED_DIR}/crio-wif-login.sh"
+  LEASED_RESOURCE=$(<"${SHARED_DIR}/crio-wif-region")
+else
 GOOGLE_PROJECT_ID="$(<${CLUSTER_PROFILE_DIR}/openshift_gcp_project)"
 export GCP_SHARED_CREDENTIALS_FILE="${CLUSTER_PROFILE_DIR}/gce.json"
 sa_email=$(jq -r .client_email ${GCP_SHARED_CREDENTIALS_FILE})
 if ! gcloud auth list | grep -E "\*\s+${sa_email}"; then
 	gcloud auth activate-service-account --key-file="${GCP_SHARED_CREDENTIALS_FILE}"
 	gcloud config set project "${GOOGLE_PROJECT_ID}"
+fi
 fi
 
 cd /tmp

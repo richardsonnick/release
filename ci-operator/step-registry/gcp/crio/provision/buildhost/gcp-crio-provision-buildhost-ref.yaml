@@ -11,6 +11,9 @@ ref:
       cpu: 10m
       memory: 100Mi
   env:
+  - name: CRIO_GCP_WIF
+    default: "false"
+    documentation: Use the GCP WIF rehearsal authentication prepared by gcp-crio-wif-prepare.
   - name: IMAGE_NAME
     default: ""
   - name: IMAGE_FAMILY
